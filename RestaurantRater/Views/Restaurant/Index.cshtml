@@ -1,7 +1,48 @@
 ﻿
+@model IEnumerable<RestaurantRater.Models.Restaurant>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
+<p>
+    @Html.ActionLink("Create new", "Create")
+</p>
+
+<table class="table">
+    <!-- " So we've added a table with a single row (<tr>) that contains a few table headers (<th>).  Inside those headers we call the Razor method DisplayNameFor and pass it something?  What we're doing here is using a lambda expression to pass in a specific property from the model.  If we run the code we'll see that we have the names of the porperties being displayed in the table headers." -->
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>  </th>
+    </tr>
+
+    <!-- "First thing you should notice is that we're adding a foreach loop into the view using (at) symbol again.  Inside our foreach loop we have another table row annd td tags, which are our table data cells.  So what is the benefit of the foreach loop?" -->
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RestaurantID })
+                @Html.ActionLink("Details", "Details", new { id = item.RestaurantID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.RestaurantID })
+            </td>
+        </tr>
+    }
+</table>
