@@ -1,0 +1,45 @@
+﻿@model RestaurantRater.Models.Restaurant
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Restaurant</h4>
+    <h1 />
+    <dl class="d1-horizontal">
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+    <!--21^^ Added confirm button to delete-->
+</div>
+
+<!--13. "You might have figured it out, you need a controller method that returns the Delete view.  Right now we have the view but no way to direct the application to load said view."-->
+
+<dt>
+    @Html.DisplayNameFor(model => model.Name)
+</dt>
+<dd>
+    @Html.DisplayFor(model => model.Name)
+</dd>
+<dt>
+    @Html.DisplayNameFor(model => model.Address)
+</dt>
+<dd>
+    @Html.DisplayFor(model => model.Address)
+</dd>
+<dt>
+    @Html.DisplayNameFor(model => model.Rating)
+</dt>
+<dd>
+    @Html.DisplayFor(model => model.Rating)
+</dd>
