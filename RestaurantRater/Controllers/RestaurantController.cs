@@ -101,5 +101,22 @@ namespace RestaurantRater.Controllers
             return View(restaurant);
         }
 
+        //"1....Let's think about what we want to do.  We want to get an ID from the index button, find a restaurant based on that ID, and then give that ID to a view.  Does this sound familiar?"
+        // GET: Restaurant/Details/{id}
+        public ActionResult Details(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Restaurant restaurant = _db.Restaurants.Find(id);
+            if(restaurant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(restaurant);
+        }
+        //Do we need a POST for the details?  NO!  We aren't changing or adding anything--only finding and displaying restaurant objects.  So this one is easy.
+
     }
 }
